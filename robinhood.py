@@ -20,7 +20,7 @@ st.write(""" # Prerit's Robinhood portfolio""")
 
 # Logging in to robinhood
 
-rs.login("prerit.saxena17@gmail.com", "prt01081960")
+rs.login("********", "********")
 
 my_stocks = rs.build_holdings()
 
