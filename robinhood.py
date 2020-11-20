@@ -14,13 +14,14 @@ import numpy as np
 import streamlit as st
 from datetime import date, timedelta
 import yfinance as yf
+import pyotp
 
 
 st.write(""" # Prerit's Robinhood portfolio""")
 
 # Logging in to robinhood
-
-rs.login("prerit.saxena17@gmail.com", "prt01081960")
+totp  = pyotp.TOTP("My2factorAppHere").now()
+rs.login("prerit.saxena17@gmail.com", "prt01081960", mfa_code=totp)
 
 my_stocks = rs.build_holdings()
 
