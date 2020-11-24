@@ -21,7 +21,7 @@ st.write(""" # Prerit's Robinhood portfolio""")
 
 # Logging in to robinhood
 totp  = pyotp.TOTP("My2factorAppHere").now()
-rs.login("********", "*******", mfa_code=totp)
+rs.login("prerit.saxena17@gmail.com", "prt01081960", mfa_code=totp)
 
 my_stocks = rs.build_holdings()
 
@@ -39,7 +39,8 @@ df[cols2] = df[cols2].apply(pd.to_numeric)
 
 st.write("Current portfolio")
 
-st.write("""Total portfolio value = $""",df['equity'].sum(),"""Total profit =$""",(round(df['equity'].sum()-(df['average_buy_price']*df['quantity']).sum())))
+st.write("""Total portfolio value = $""",round(df['equity'].sum()),"""Total profit =$""",(round(df['equity'].sum()-(df['average_buy_price']*df['quantity']).sum())),
+         """Total profit % = """,(round((df['equity'].sum()-(df['average_buy_price']*df['quantity']).sum())/df['equity'].sum(),2)*100),"""%""")
 
 st.write(df)
 
