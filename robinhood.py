@@ -21,7 +21,7 @@ st.write(""" # Prerit's Robinhood portfolio""")
 
 # Logging in to robinhood
 totp  = pyotp.TOTP("My2factorAppHere").now()
-rs.login("*********", "*******", mfa_code=totp)
+rs.login("prerit.saxena17@gmail.com", "prt01081960", mfa_code=totp)
 
 my_stocks = rs.build_holdings()
 
@@ -94,6 +94,17 @@ st.line_chart(tickerDf.Close)
 'Average Cost per share: $', round(df[df['ticker']==option]['average_buy_price']).values[0]
 'Current Equity: $', round(df[df['ticker']==option]['equity']).values[0]
 'Total Return: $', (round(df[df['ticker']==option]['equity'].sum()-(df[df['ticker']==option]['average_buy_price']*df[df['ticker']==option]['quantity']).sum()))
+
+return_per = (round((df[df['ticker']==option]['equity'].sum()-(df[df['ticker']==option]['average_buy_price']*df[df['ticker']==option]['quantity']).sum())/(df[df['ticker']==option]['average_buy_price']*df[df['ticker']==option]['quantity']).sum()*100))
+'Total Return %: ', return_per,'%'
+if return_per>=50:
+    status = 'Good'
+elif return_per>0 and return_per<50:
+    status='Bad'
+else:
+    status='Ugly'
+    
+'Status: ', status
 
 # expander = st.beta_expander("Stock Statistics")
 # expander.write('Last Close: ',tickerDf.Close[-1])
