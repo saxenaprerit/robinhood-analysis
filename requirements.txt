@@ -1,7 +1,7 @@
-robin_stocks==1.5.3
+robin_stocks
 pandas
 numpy
 matplotlib
-yfinance==0.1.55
-streamlit==0.71.0
+yfinance
+streamlit
 seaborn
